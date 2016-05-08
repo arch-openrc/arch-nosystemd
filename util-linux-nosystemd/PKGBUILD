@@ -9,7 +9,7 @@
 pkgbase=util-linux-nosystemd
 pkgname=(util-linux-nosystemd libutil-linux-nosystemd)
 pkgver=2.28
-pkgrel=1
+pkgrel=2
 pkgdesc="Miscellaneous system utilities for Linux"
 url="https://www.kernel.org/pub/linux/utils/util-linux/"
 arch=('i686' 'x86_64')
@@ -50,7 +50,7 @@ build() {
 package_util-linux-nosystemd() {
   conflicts=('util-linux' 'util-linux-ng' 'eject' 'zramctl')
   provides=("util-linux=$pkgver" "util-linux-ng=$pkgver" 'eject' 'zramctl')
-  replaces=('zramctl')
+  replaces=('util-linux' 'util-linux-ng' 'zramctl')
   depends=('pam' 'shadow' 'coreutils' 'libutil-linux')
   optdepends=('python: python bindings to libmount')
   install=util-linux.install
@@ -95,6 +95,7 @@ package_libutil-linux-nosystemd() {
   pkgdesc="util-linux runtime libraries"
   conflicts=('libutil-linux')
   provides=("libutil-linux=$pkgver" 'libblkid.so' 'libfdisk.so' 'libmount.so' 'libsmartcols.so' 'libuuid.so')
+  replaces=('libutil-linux')
 
   mv "$srcdir/_libutil-linux"/* "$pkgdir"
 }
