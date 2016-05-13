@@ -4,8 +4,8 @@
 pkgbase=gvfs-nosystemd
 _pkgbase=gvfs
 pkgname=$pkgbase
-pkgver=1.28.1
-pkgrel=2
+pkgver=1.28.2
+pkgrel=1
 arch=(i686 x86_64)
 license=(LGPL)
 makedepends=(avahi dbus fuse intltool libarchive libcdio-paranoia libgphoto2 libimobiledevice
@@ -16,7 +16,7 @@ groups=(gnome)
 conflicts=($_pkgbase)
 provides=($_pkgbase=$pkgver)
 source=(http://ftp.gnome.org/pub/gnome/sources/$_pkgbase/${pkgver:0:4}/$_pkgbase-$pkgver.tar.xz)
-sha256sums=('4ecfe5ac35c1b3e61d6abddc98902b6c7faf243308c60b165f01990783f17999')
+sha256sums=('bc6af45cff7e7e8d33c3a4be1d27e479f10f80105a6f2d1fae75c5c0d40636d9')
 
 prepare() {
   cd "$_pkgbase-$pkgver"
@@ -35,7 +35,7 @@ build() {
 package_gvfs-nosystemd() {
   pkgdesc="Userspace virtual filesystem implemented as a pluggable module for gio"
   depends=(avahi dconf fuse libarchive libcdio-paranoia libsoup udisks2 libsecret libbluray libgudev gcr)
-  replaces=($_pkgbase gvfs-{obexftp,afp})
+  replaces=(gvfs-{obexftp,afp})
   optdepends=('gvfs-afc: AFC (mobile devices) support'
               'gvfs-smb: SMB/CIFS (Windows client) support'
               'gvfs-gphoto2: gphoto2 (PTP camera/MTP media player) support'
