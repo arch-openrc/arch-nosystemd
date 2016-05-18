@@ -23,12 +23,11 @@ provides=("mkinitcpio=${pkgver}-${pkgrel}")
 conflicts=('mkinitcpio')
 replaces=('mkinitcpio')
 backup=('etc/mkinitcpio.conf')
-source=("https://sources.archlinux.org/other/${pkgname%-nosystemd}/${pkgname%-nosystemd}-$pkgver.tar.gz"{,.sig}
+source=("https://sources.archlinux.org/other/${pkgname%-nosystemd}/${pkgname%-nosystemd}-$pkgver.tar.gz"
  		'remove-systemd.patch'
 		)
 install=mkinitcpio.install
 sha256sums=('7170e7a3d1b9ed21b0961941a327886febe80e62e2dfee6b88359ed72d0da620'
-            'SKIP'
 			'4921518d130b73724645b3732ba471005b8755a89a219bb6396e3b082414bb78'
 			)
 

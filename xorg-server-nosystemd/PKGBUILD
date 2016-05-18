@@ -12,21 +12,17 @@ pkgrel=1
 arch=('i686' 'x86_64')
 license=('custom')
 url="http://xorg.freedesktop.org"
-makedepends=('pixman' 'libx11' 'mesa-nosystemd' 'mesa-libgl-nosystemd' 'xf86driproto' 'xcmiscproto' 'xtrans' 'bigreqsproto' 'randrproto' 
+makedepends=('pixman' 'libx11' 'mesa-nosystemd' 'mesa-libgl-nosystemd' 'xf86driproto' 'xcmiscproto' 'xtrans' 'bigreqsproto' 'randrproto'
              'inputproto' 'fontsproto' 'videoproto' 'presentproto' 'compositeproto' 'recordproto' 'scrnsaverproto'
              'resourceproto' 'xineramaproto' 'libxkbfile' 'libxfont' 'renderproto' 'libpciaccess' 'libxv'
              'xf86dgaproto' 'libxmu' 'libxrender' 'libxi' 'dmxproto' 'libxaw' 'libdmx' 'libxtst' 'libxres'
              'xorg-xkbcomp' 'xorg-util-macros' 'xorg-font-util' 'glproto' 'dri2proto' 'libgcrypt' 'libepoxy'
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms' 'dri3proto'
              'libxshmfence' 'libunwind')
-source=(${url}/releases/individual/xserver/${_pkgbase}-${pkgver}.tar.bz2{,.sig}
+source=(${url}/releases/individual/xserver/${_pkgbase}-${pkgver}.tar.bz2
         xvfb-run
         xvfb-run.1)
-validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
-              'C383B778255613DFDB409D91DB221A6900000011'
-              'DD38563A8A8224537D1F90E45B8A2D50A0ECD0D3')
 sha256sums=('ea739c22517cdbe2b5f7c0a5fd05fe8a10ac0629003e71c0c7862f4bb60142cd'
-            'SKIP'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776')
 
@@ -64,7 +60,7 @@ build() {
       --with-fontrootdir=/usr/share/fonts \
       --with-sha1=libgcrypt \
       --without-systemd-daemon
-      
+
 #      --without-dtrace \
 #      --disable-linux-acpi --disable-linux-apm \
 
@@ -89,7 +85,7 @@ package_xorg-server-common-nosystemd() {
   cd "${_pkgbase}-${pkgver}"
   install -m755 -d "${pkgdir}/usr/share/licenses/xorg-server-common"
   install -m644 COPYING "${pkgdir}/usr/share/licenses/xorg-server-common"
-  
+
   make -C xkb DESTDIR="${pkgdir}" install-data
 
   install -m755 -d "${pkgdir}/usr/share/man/man1"
@@ -204,8 +200,8 @@ package_xorg-server-xwayland-nosystemd() {
 package_xorg-server-devel-nosystemd() {
   pkgdesc="Development files for the X.Org X server"
   depends=(# see pkgdir/usr/lib/pkgconfig/xorg-server.pc
-           'xproto' 'randrproto' 'renderproto' 'xextproto' 'inputproto' 'kbproto' 
-           'fontsproto' 'pixman' 'videoproto' 'xf86driproto' 'glproto' 
+           'xproto' 'randrproto' 'renderproto' 'xextproto' 'inputproto' 'kbproto'
+           'fontsproto' 'pixman' 'videoproto' 'xf86driproto' 'glproto'
            'mesa' 'dri2proto' 'dri3proto' 'xineramaproto' 'libpciaccess'
            'resourceproto' 'scrnsaverproto' 'presentproto'
            # not technically required but almost every Xorg pkg needs it to build
