@@ -1,0 +1,14 @@
+--- logrotate.orig/logrotate.c	2016-03-14 05:17:33.000000000 -0300
++++ logrotate/logrotate.c	2016-05-19 17:02:27.180059557 -0400
+@@ -1785,8 +1785,9 @@
+ {
+     int hasErrors = 0;
+ 
+-    if (!state->doRotate)
+-	return 0;
++    if (!state->doRotate) {
++		return 0;
++	}
+ 
+ 	if (!hasErrors && log->flags & LOG_FLAG_TMPFILENAME) {
+ 		char *tmpFilename = NULL;
