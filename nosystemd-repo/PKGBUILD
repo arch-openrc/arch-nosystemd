@@ -7,5 +7,5 @@ url="https://github.com/cromerc/packages-nosystemd"
 license=('GPL2')
 groups=('base')
 source=('nosystemd-repo.install')
-sha256sums=('440aa078e06c02ee692331a1a40071f5a91ca1b291040fa134a9a5876ab671fb')
+sha256sums=('ad92ff5a82f0745092ebf63b369eb1b2cf5192af156757815e1314309950db43')
 install=${pkgname}.install
