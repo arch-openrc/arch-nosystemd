@@ -6,7 +6,7 @@
 
 pkgname=mkinitcpio-nosystemd
 pkgver=19
-pkgrel=2
+pkgrel=3
 pkgdesc="Modular initramfs image creation utility"
 arch=('any')
 url="https://projects.archlinux.org/mkinitcpio.git/"
