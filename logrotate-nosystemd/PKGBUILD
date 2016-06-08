@@ -20,7 +20,7 @@ replaces=('logrotate')
 backup=('etc/logrotate.conf')
 source=("https://github.com/logrotate/logrotate/archive/${pkgver}.tar.gz"
         'paths.patch'
-	'gcc6.patch'
+		'gcc6.patch'
         'logrotate.conf'
         'logrotate.cron.daily')
 md5sums=('584bca013dcceeb23b06b27d6d0342fb'
