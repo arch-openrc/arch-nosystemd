@@ -17,10 +17,9 @@ arch=('i686' 'x86_64')
 makedepends=('python')
 license=('GPL2')
 options=('strip' 'debug')
-source=("https://www.kernel.org/pub/linux/utils/util-linux/v$pkgver/${pkgname%-nosystemd}-$pkgver.tar."{xz,sign}
+source=("https://www.kernel.org/pub/linux/utils/util-linux/v$pkgver/${pkgname%-nosystemd}-$pkgver.tar.xz"
         pam-{login,common,su})
 md5sums=('e534e6ccc49107e5d31c329af798ef7d'
-         'SKIP'
          '4368b3f98abd8a32662e094c54e7f9b1'
          'a31374fef2cba0ca34dfc7078e2969e4'
          'fa85e5cce5d723275b14365ba71a8aad')
