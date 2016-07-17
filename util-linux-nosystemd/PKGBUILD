@@ -10,14 +10,13 @@ pkgbase=util-linux-nosystemd
 pkgname=(util-linux-nosystemd libutil-linux-nosystemd)
 _pkgmajor=2.28
 pkgver=${_pkgmajor}
-pkgrel=1
+pkgrel=3
 pkgdesc="Miscellaneous system utilities for Linux"
 url="https://www.kernel.org/pub/linux/utils/util-linux/"
 arch=('i686' 'x86_64')
 makedepends=('python')
 license=('GPL2')
 options=('strip' 'debug')
-validpgpkeys=('B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284')  # Karel Zak
 source=("https://www.kernel.org/pub/linux/utils/util-linux/v$pkgver/${pkgname%-nosystemd}-$pkgver.tar."{xz,sign}
         pam-{login,common,su})
 md5sums=('e534e6ccc49107e5d31c329af798ef7d'
@@ -44,7 +43,7 @@ build() {
               --with-systemdsystemunitdir=no \
 			  --with-systemd=no
 			  #--enable-libmount-force-mountinfo \ #recommended for systemd
-              #--enable-socket-activation \ #??? option not available 
+              #--enable-socket-activation \ #??? option not available
   make
 }
 
