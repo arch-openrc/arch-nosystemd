@@ -16,6 +16,7 @@ groups=('eudev-base')
 depends=('expat' 'coreutils' 'filesystem' 'shadow')
 makedepends=('libx11')
 optdepends=('libx11: dbus-launch support'
+            'dbus-openrc: dbus openrc initscript'
             'dbus-docs: documentation')
 provides=('dbus-core' "dbus=${pkgver}" "libdbus=${pkgver}")
 conflicts=('dbus-core' 'dbus' 'libdbus' 'dbus-eudev' 'dbus-x11')
