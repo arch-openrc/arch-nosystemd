@@ -10,7 +10,6 @@ pkgbase=util-linux-nosystemd
 pkgname=(util-linux-nosystemd libutil-linux-nosystemd)
 _pkgmajor=2.29
 pkgver=${_pkgmajor}
-epoch=1
 pkgrel=2
 pkgdesc="Miscellaneous system utilities for Linux"
 url="https://www.kernel.org/pub/linux/utils/util-linux/"
