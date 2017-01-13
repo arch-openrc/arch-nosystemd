@@ -8,7 +8,7 @@ pkgname=('xorg-server-nosystemd' 'xorg-server-xephyr-nosystemd' 'xorg-server-xdm
 		 'xorg-server-xnest-nosystemd' 'xorg-server-xwayland-nosystemd' 'xorg-server-common-nosystemd' 'xorg-server-devel-nosystemd')
 _pkgbase=xorg-server
 pkgver=1.19.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 license=('custom')
 groups=('xorg')
@@ -20,7 +20,7 @@ makedepends=('pixman' 'libx11' 'mesa' 'mesa-libgl' 'xf86driproto' 'xcmiscproto' 
              'xorg-xkbcomp' 'xorg-util-macros' 'xorg-font-util' 'glproto' 'dri2proto' 'libgcrypt' 'libepoxy'
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms' 'dri3proto'
              'libxshmfence' 'libunwind' 'wayland-protocols')
-source=(${url}/releases/individual/xserver/${_pkgbase}-${pkgver}.tar.bz2{,.sig}
+source=(https://xorg.freedesktop.org/releases/individual/xserver/${_pkgbase}-${pkgver}.tar.bz2{,.sig}
         xvfb-run
         xvfb-run.1)
 validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
@@ -30,7 +30,6 @@ sha256sums=('79ae2cf39d3f6c4a91201d8dad549d1d774b3420073c5a70d390040aa965a7fb'
             'SKIP'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776')
-
 
 build() {
   cd "${_pkgbase}-${pkgver}"
@@ -102,7 +101,7 @@ package_xorg-server-common-nosystemd() {
 
 package_xorg-server-nosystemd() {
   pkgdesc="Xorg X server"
-  depends=('libepoxy' 'libxfont2' 'pixman' 'xorg-server-common' 'libunwind' 'libgl' 'xf86-input-libinput')
+  depends=('libepoxy' 'libxfont2' 'pixman' 'xorg-server-common-nosystemd' 'libunwind' 'dbus-nosystemd' 'libgl' 'xf86-input-evdev')
   # see xorg-server-*/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
   # and /usr/lib/pkgconfig/xorg-server.pc in xorg-server-devel pkg
   provides=('X-ABI-VIDEODRV_VERSION=23' 'X-ABI-XINPUT_VERSION=24.1' 'X-ABI-EXTENSION_VERSION=10.0' 'x-server' 'xorg-server')
@@ -135,7 +134,7 @@ package_xorg-server-nosystemd() {
 
 package_xorg-server-xephyr-nosystemd() {
   pkgdesc="A nested X server that runs as an X application"
-  depends=('libxfont2' 'libgl' 'libepoxy' 'libunwind' 'libxv' 'pixman' 'xorg-server-common' 'xcb-util-image'
+  depends=('libxfont2' 'libgl' 'libepoxy' 'libunwind' 'libxv' 'pixman' 'xorg-server-common-nosystemd' 'xcb-util-image'
            'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms')
   provides=('xorg-server-xephyr')
   conflicts=('xorg-server-xephyr')
@@ -149,7 +148,7 @@ package_xorg-server-xephyr-nosystemd() {
 
 package_xorg-server-xvfb-nosystemd() {
   pkgdesc="Virtual framebuffer X server"
-  depends=('libxfont2' 'libunwind' 'pixman' 'xorg-server-common' 'xorg-xauth' 'libgl')
+  depends=('libxfont2' 'libunwind' 'pixman' 'xorg-server-common-nosystemd' 'xorg-xauth' 'libgl')
   provides=('xorg-server-xvfb')
   conflicts=('xorg-server-xvfb')
   replaces=('xorg-server-xvfb')
@@ -165,7 +164,7 @@ package_xorg-server-xvfb-nosystemd() {
 
 package_xorg-server-xnest-nosystemd() {
   pkgdesc="A nested X server that runs as an X application"
-  depends=('libxfont2' 'libxext' 'libunwind' 'pixman' 'xorg-server-common')
+  depends=('libxfont2' 'libxext' 'libunwind' 'pixman' 'xorg-server-common-nosystemd')
   provides=('xorg-server-xnest')
   conflicts=('xorg-server-xnest')
   replaces=('xorg-server-xnest')
@@ -178,7 +177,7 @@ package_xorg-server-xnest-nosystemd() {
 
 package_xorg-server-xdmx-nosystemd() {
   pkgdesc="Distributed Multihead X Server and utilities"
-  depends=('libxfont2' 'libxi' 'libxaw' 'libxrender' 'libdmx' 'libxfixes' 'libunwind' 'pixman' 'xorg-server-common')
+  depends=('libxfont2' 'libxi' 'libxaw' 'libxrender' 'libdmx' 'libxfixes' 'libunwind' 'pixman' 'xorg-server-common-nosystemd')
   provides=('xorg-server-xdmx')
   conflicts=('xorg-server-xdmx')
   replaces=('xorg-server-xdmx')
@@ -191,7 +190,7 @@ package_xorg-server-xdmx-nosystemd() {
 
 package_xorg-server-xwayland-nosystemd() {
   pkgdesc="run X clients under wayland"
-  depends=('libxfont2' 'libepoxy' 'libunwind' 'libgl' 'pixman' 'xorg-server-common')
+  depends=('libxfont2' 'libepoxy' 'libunwind' 'libgl' 'pixman' 'xorg-server-common-nosystemd')
   provides=('xorg-server-xwayland')
   conflicts=('xorg-server-xwayland')
   replaces=('xorg-server-xwayland')
